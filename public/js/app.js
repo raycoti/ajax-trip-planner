@@ -20,14 +20,14 @@ function AttractionChooser(type, attractions) {
     .append(PlusButton(function() {
       appStore.dispatch(addAttractionToDay(type, $select.val()));
     }))
-        
+
 }
 
 function AttractionChoosers(state) {
   const $elem = $(`
     <div class="panel panel-default">
       <div class="panel-body" id="options-panel">
-      
+
       </div>
     </div>
   `);
@@ -36,7 +36,7 @@ function AttractionChoosers(state) {
     .append(AttractionChooser('hotels', state.hotels))
     .append(AttractionChooser('restaurants', state.restaurants))
     .append(AttractionChooser('activities', state.activities))
-  
+
   return $elem;
 }
 
@@ -58,7 +58,7 @@ function DayButton(i, currentDay) {
   `)
   .addClass(i === currentDay ? 'current-day': null)
   .on('click', function() {
-    appStore.dispatch(setCurrentDay(i));
+    setCurrentDay(i);
   })
 }
 
@@ -126,7 +126,7 @@ function DayPanel(state) {
     .append(AttractionListContainer('hotels', state))
     .append(AttractionListContainer('restaurants', state))
     .append(AttractionListContainer('activities', state));
-  
+
   return $elem;
 }
 

@@ -42,6 +42,9 @@ $.get('/api/hotels')
   })
 })
 
+//get all the days
+//will need to update via dispatch
+
 .catch( console.error.bind(console) );
 //});
 

@@ -8,13 +8,12 @@ var Promise = require('bluebird');
 var hotelRouter = require('./api/hotels.js');
 var activitiesRouter = require('./api/activities.js');
 var restaurantsRouter = require('./api/restaurants.js');
-
-
+var dayRouter = require('./api/day.js');
 
 router.use('/api/hotels', hotelRouter);
 router.use('/api/activities', activitiesRouter);
 router.use('/api/restaurants', restaurantsRouter);
-
+router.use('/api/days', dayRouter);
 
 /*router.get('/', function(req, res, next) {
 

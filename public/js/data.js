@@ -78,10 +78,14 @@ function addAttractionToDay(type, attractionId) {
 }
 
 function setCurrentDay(i) {
-  return {
-    type: 'SET_CURRENT_DAY',
-    currentDay: i
-  };
+  console.log('setCurrentDay')
+  $.get(`/api/days/${i + 1}`)
+  .then((day) => {
+    appStore.dispatch({
+      type: 'SET_CURRENT_DAY',
+      currentDay: i
+    });
+  })
 }
 
 /*hotels.forEach(hotel =>
