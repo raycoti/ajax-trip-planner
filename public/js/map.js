@@ -34,8 +34,9 @@ $(function initializeMap (){
       clearMap();
       ['hotels', 'restaurants', 'activities']
         .forEach(type => {
-          day[type]
+          return day[type]
             .map(id => {
+              if(typeof id === 'object') id= id.id;
               return state[type][id]
             })
             .forEach(attractionObj => {

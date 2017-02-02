@@ -1,8 +1,12 @@
 var express = require('express');
 var router = express.Router();
 var Hotel = require('../../models/hotel');
+var Place = require('../../models/place');
+
 router.get('/', (req, res, next) => {
-    Hotel.findAll({})
+    Hotel.findAll({
+      include: [Place]
+    })
     .then((hotels) => {
         //console.log(activities);
         res.send(hotels);
@@ -11,8 +15,7 @@ router.get('/', (req, res, next) => {
 });
 
 router.post('/',(req, res, next) => {
-    console.log('post hotels');
-      res.send('hi');
+  res.send(console.log(req.body))
 });
 
 router.put('/', (req, res, next) => {

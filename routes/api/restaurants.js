@@ -1,8 +1,12 @@
 var express = require('express');
 var router = express.Router();
 var Restaurant = require('../../models/restaurant');
+var Place = require('../../models/place');
+
 router.get('/', (req, res, next) => {
-        Restaurant.findAll({})
+        Restaurant.findAll({
+          include: [Place]
+        })
     .then((restaurant) => {
         //console.log(activities);
         res.send(restaurant);

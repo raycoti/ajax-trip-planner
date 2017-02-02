@@ -70,11 +70,17 @@ function addDay() {
 }
 
 function addAttractionToDay(type, attractionId) {
-  return {
-    type: 'ADD_ATTRACTION_TO_DAY',
-    attractionType: type,
-    attractionId
-  };
+  //need to send a post to api/day and save attraction to database
+  $.post(`api/${type}`, { id: attractionId })
+  .then(() => {
+    //console.log('id', attractionId);
+    //console.log('type', type);
+    appStore.dispatch({
+      type: 'ADD_ATTRACTION_TO_DAY',
+      attractionType: type,
+      attractionId
+    });
+  })
 }
 
 function setCurrentDay(i) {

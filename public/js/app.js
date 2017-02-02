@@ -18,7 +18,7 @@ function AttractionChooser(type, attractions) {
     .append(`<h4>${type}</h4>`)
     .append($select)
     .append(PlusButton(function() {
-      appStore.dispatch(addAttractionToDay(type, $select.val()));
+      addAttractionToDay(type, $select.val());
     }))
 
 }
@@ -81,6 +81,7 @@ function DayNavigation(days, currentDay) {
 }
 
 function AttractionListItem(attraction) {
+  console.log(attraction);
   return $(`
     <div class="itinerary-item">
       <span class="title">${attraction.name}</span>
@@ -99,14 +100,18 @@ function AttractionList(attractions) {
 function AttractionListContainer(type, state) {
   const day = state.days[state.currentDay];
   if(!day) { return; }
-
-  const attractions = day[type]
-    .map(id => state[type][id]);
-
+  const attractions = day[type] //[hotel1, hotel2]
+    .map(id => { //attraction.id?
+      if(typeof id === 'object'){
+        id = id.id
+      }
+      console.log('id',id)
+     return state[type][id];
+    });
+  console.log(attractions);
   return $(`<div />`)
     .append(`<h4>${type}</h4>`)
     .append(AttractionList(attractions))
-
 }
 
 function DayPanel(state) {

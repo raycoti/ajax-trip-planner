@@ -1,10 +1,13 @@
 var express = require('express');
 var router = express.Router();
 var Activity = require('../../models/activity');
+var Place = require('../../models/place');
 
 router.get('/', (req, res, next) => {
     //console.log('get activities');
-    Activity.findAll({})
+    Activity.findAll({
+        include: [Place]
+    })
     .then((activities) => {
         //console.log(activities);
         res.send(activities);

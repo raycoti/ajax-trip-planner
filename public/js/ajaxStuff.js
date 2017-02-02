@@ -44,8 +44,21 @@ $.get('/api/hotels')
 
 //get all the days
 //will need to update via dispatch
+$.get('/api/days')
+.then(function (days) {
+  console.log(days);
+  days.forEach(function(day){
+    appStore.dispatch({
+    type: 'ADD_DAY',
+    day: {
+      hotels: [day.hotel],
+      restaurants: day.restaurants,
+      activities: day.activities
+      }
+    })
+  })
+})
+.catch( console.error.bind(console));
 
-.catch( console.error.bind(console) );
-//});
 
 

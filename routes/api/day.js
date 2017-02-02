@@ -2,10 +2,19 @@ var express = require('express');
 var router = express.Router();
 
 var Day = require('../../models/day');
+var Hotel = require('../../models/hotel');
+var Restaurant = require('../../models/restaurant');
+var Activity = require('../../models/activity');
+var Place = require('../../models/place');
 
 router.get('/', (req, res, next) => {
     //console.log('get activities');
-    res.send('hi day')
+    Day.findAll({
+      include: [ Hotel, Restaurant, Activity ]
+    })
+    .then((days) => {
+      res.send(days)
+    })
 });
 
 //routes for all days
