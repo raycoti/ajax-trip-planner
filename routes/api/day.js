@@ -42,8 +42,14 @@ router.get('/:id', (req, res, next) => {
       id: req.params.id
     }
   }).then((day) => {
+    console.log(day);
     res.send(day);
   })
+  .catch((err) => {
+    console.log('no days?');
+    res.send({})
+  }
+  )
 });
 
 router.post('/:id', (req, res, next) => {
@@ -67,11 +73,14 @@ router.delete('/:id/restaurants', (req, res, next) => {
 });
 
 //routes for hotels
-router.post('/:id/hotels', (req, res, next) => {
+router.post('/:id/hotels', (req, res, next) => { 
+  console.log(req.params.id);
+
   res.send(req.params.id)
 });
 
 router.delete('/:id/hotels', (req, res, next) => {
+ 
   res.send(req.params.id)
 });
 

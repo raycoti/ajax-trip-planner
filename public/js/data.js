@@ -73,8 +73,11 @@ function addDay() {
 }
 
 function addAttractionToDay(type, attractionId) {
+ // console.log('should be adding');
+  var currDay = appStore.state.currentDay;
+  console.log(attractionId)
   //need to send a post to api/day and save attraction to database
-  $.post(`api/${type}`, { id: attractionId })
+  $.post(`api/days/${currDay+1}/${type}`, { id: attractionId })
   .then(() => {
     //console.log('id', attractionId);
     //console.log('type', type);
@@ -87,7 +90,7 @@ function addAttractionToDay(type, attractionId) {
 }
 
 function setCurrentDay(i) {
-  console.log('setCurrentDay')
+  console.log('setCurrentDay', i);
   $.get(`/api/days/${i + 1}`)
   .then((day) => {
     appStore.dispatch({

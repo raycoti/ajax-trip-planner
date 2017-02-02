@@ -100,18 +100,28 @@ function AttractionList(attractions) {
 function AttractionListContainer(type, state) {
   const day = state.days[state.currentDay];
   if(!day) { return; }
-  const attractions = day[type] //[hotel1, hotel2]
-    .map(id => { //attraction.id?
-      if(typeof id === 'object'){
-        id = id.id
-      }
-      console.log('id',id)
-     return state[type][id];
-    });
+  console.log('type', type)
+  console.log('what',day[type]);
+  if(day[type][0] !== null || day[type].length > 1){
+    const attractions = day[type] //[hotel1, hotel2]
+      .map(id => { //attraction.id?
+        if(typeof id === 'object'){
+          id = id.id
+        }
+        //console.log(state[type][id])
+        console.log('id',id)
+      return state[type][id];
+      });
+
   console.log(attractions);
   return $(`<div />`)
     .append(`<h4>${type}</h4>`)
     .append(AttractionList(attractions))
+}
+else{
+   return $(`<div />`)
+    .append(`<h4>${type}</h4>`)
+}
 }
 
 function DayPanel(state) {

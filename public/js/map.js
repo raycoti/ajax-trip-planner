@@ -34,12 +34,16 @@ $(function initializeMap (){
       clearMap();
       ['hotels', 'restaurants', 'activities']
         .forEach(type => {
+          //console.log(day[type]);
           return day[type]
             .map(id => {
+              if(id === null){return null;}
               if(typeof id === 'object') id= id.id;
+              //console.log('theId', id);
               return state[type][id]
             })
             .forEach(attractionObj => {
+            if (attractionObj === null){return}
               drawMarker(attractionObj.place.location)
             })
         })
