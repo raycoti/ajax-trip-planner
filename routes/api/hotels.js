@@ -15,7 +15,19 @@ router.get('/', (req, res, next) => {
 });
 
 router.post('/',(req, res, next) => {
-  res.send(console.log(req.body))
+  // Day.update({
+  //   {hotelId: req.body.id},
+  // })
+  // Hotel.findOne({
+  //   where: {
+  //     id: req.body.id
+  //   }
+  // })
+  // .then((hotel) => {
+  //   Day.update({
+  //     hotelId: hotel
+  //   })
+  // })
 });
 
 router.put('/', (req, res, next) => {

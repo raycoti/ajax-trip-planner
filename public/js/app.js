@@ -76,7 +76,7 @@ function DayNavigation(days, currentDay) {
   return $(`<div class="day-buttons"/>`)
     .append(DayButtons(days, currentDay))
     .append(PlusButton(function() {
-      appStore.dispatch(addDay());
+      addDay();
     }))
 }
 

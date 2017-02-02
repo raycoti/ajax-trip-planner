@@ -19,7 +19,12 @@ router.get('/', (req, res, next) => {
 
 //routes for all days
 router.post('/',(req, res, next) => {
-  res.send('hi day')
+  Day.create({
+    number: null
+  })
+  .then(() => {
+    res.send()
+  })
 });
 
 router.put('/', (req, res, next) => {
@@ -42,7 +47,6 @@ router.get('/:id', (req, res, next) => {
 });
 
 router.post('/:id', (req, res, next) => {
-  res.send(req.params.id)
 });
 
 router.put('/:id', (req, res, next) => {

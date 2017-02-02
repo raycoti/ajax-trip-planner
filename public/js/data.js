@@ -59,14 +59,17 @@ const appStore = new Store({
 }, reducer);
 
 function addDay() {
-  return {
-    type: 'ADD_DAY',
-    day: {
-      hotels: [],
-      restaurants: [],
-      activities: []
-    }
-  };
+  $.post(`api/days`)
+  .then(() => {
+    appStore.dispatch({
+      type: 'ADD_DAY',
+      day: {
+        hotels: [],
+        restaurants: [],
+        activities: []
+      }
+    })
+  })
 }
 
 function addAttractionToDay(type, attractionId) {
